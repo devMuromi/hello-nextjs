@@ -1,3 +1,6 @@
+import path from "path";
+import fs from "fs/promises"; // react will not include this in the client side bundle
+
 function HomePage(props) {
   // Next pre-render every page that has no dynamic data
   const { products } = props;
@@ -12,12 +15,12 @@ function HomePage(props) {
 
 // this function will run on the server and not shown on the client
 export async function getStaticProps(context) {
+  const filePath = path.join(process.cwd(), "data", "dummy-backend.json"); // 이때 현재 /pages가 아닌 / 디렉토리를 가리킴
+  const jsonData = await fs.readFile(filePath);
+  const data = JSON.parse(jsonData);
   return {
     props: {
-      products: [
-        { id: "p1", title: "Product 1" },
-        { id: "p2", title: "Product 2" },
-      ],
+      products: data.products,
     },
   };
 }
