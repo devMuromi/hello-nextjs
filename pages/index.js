@@ -22,6 +22,9 @@ export async function getStaticProps(context) {
     props: {
       products: data.products,
     },
+    // Incremental Static Generation
+    // in development mode, this will be ignored and always re-generated
+    revalidate: 10, // regenerate every 10 seconds
   };
 }
 
