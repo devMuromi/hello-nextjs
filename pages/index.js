@@ -1,13 +1,17 @@
 import path from "path";
 import fs from "fs/promises"; // react will not include this in the client side bundle
 
+import Link from "next/link";
+
 function HomePage(props) {
   // Next pre-render every page that has no dynamic data
   const { products } = props;
   return (
     <ul>
       {products.map((product) => (
-        <li key={product.id}>{product.title}</li>
+        <li key={product.id}>
+          <Link href={`/${product.id}`}>{product.title}</Link>
+        </li>
       ))}
     </ul>
   );
