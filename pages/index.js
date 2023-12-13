@@ -18,6 +18,17 @@ export async function getStaticProps(context) {
   const filePath = path.join(process.cwd(), "data", "dummy-backend.json"); // 이때 현재 /pages가 아닌 / 디렉토리를 가리킴
   const jsonData = await fs.readFile(filePath);
   const data = JSON.parse(jsonData);
+
+  if (!data) {
+    return {
+      redirect: {
+        destination: "/no-data",
+      },
+    };
+  }
+  if (data.products.length === 0) {
+    return { notFound: true }; // 404 page
+  }
   return {
     props: {
       products: data.products,
