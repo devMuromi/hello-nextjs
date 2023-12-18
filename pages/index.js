@@ -1,5 +1,14 @@
+import { Fragment } from "react";
+
+import Hero from "../components/home-page/hero";
+
 function HomePage() {
-  return <div>Welcome to Next.js!</div>;
+  return (
+    <Fragment>
+      <Hero />
+      {/* <FeaturedPosts /> */}
+    </Fragment>
+  );
 }
 
 export default HomePage;
