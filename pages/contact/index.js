@@ -1,5 +1,7 @@
+import ContactForm from "@/components/contact/contact-form";
+
 function ContactPage() {
-  return <div>Welcome to Next.js!</div>;
+  return <ContactForm />;
 }
 
 export default ContactPage;
