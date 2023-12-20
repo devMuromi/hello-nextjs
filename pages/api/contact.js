@@ -14,8 +14,8 @@ async function handler(req, res) {
     };
 
     // use firebase to store the data
+    const firebaseUrl = `${process.env.firebase_url}/contact.json`;
     try {
-      const firebaseUrl = "https://hello-nextjs-9a642-default-rtdb.firebaseio.com/contact.json";
       const response = await fetch(firebaseUrl, {
         method: "POST",
         body: JSON.stringify(newMessage),
